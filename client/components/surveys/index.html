@@ -1,0 +1,7 @@
+<template name="surveys">
+  {{# each surveys}}
+    {{name}}
+    {{questions}}
+  {{/ each}}
+  <a href="{{pathFor 'surveys.new' }}" class="btn-floating btn-large waves-effect waves-light right light-blue"><i class="material-icons">add</i></a>
+</template>
