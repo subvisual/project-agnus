@@ -1,7 +1,25 @@
 <template name="surveys">
   {{# each surveys}}
-    {{name}}
-    {{questions}}
+  <div class="col s12">
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <div class="row">
+          <div class="col s12">
+            <div class="card hoverable">
+              <div class="card-content">
+                <span class="card-title black-text">{{name}}</span>
+                <p>Added by: {{author}}</p>
+              </div>
+              <div class="card-action right-align">
+                <a href="{{pathFor 'surveys.delete' id=_id}}" class="waves-effect waves-light btn red white-text">Delete</a>
+                <a href="{{pathFor 'surveys.edit' id=_id}}" class="waves-effect waves-light btn white-text">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   {{/ each}}
   <a href="{{pathFor 'surveys.new' }}" class="btn-floating btn-large waves-effect waves-light right light-blue"><i class="material-icons">add</i></a>
 </template>

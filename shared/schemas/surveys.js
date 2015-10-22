@@ -3,6 +3,10 @@ SurveysSchema = new SimpleSchema({
     type: String,
     label: 'Name'
   },
+  author: {
+    type: String,
+    label: 'Author'
+  },
   questions: {
     type: [String],
     optional: true
