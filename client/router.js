@@ -7,7 +7,7 @@ var beforeHooks = {
 };
 
 Router.configure(configs);
-// Router.onBeforeAction(beforeHooks.isLoggedIn, { except: ['login'] });
+Router.onBeforeAction(beforeHooks.isLoggedIn, { except: ['login'] });
 
 function isLoggedIn() {
   if (!Meteor.userId())

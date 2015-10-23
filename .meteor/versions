@@ -33,8 +33,8 @@ ejson@1.0.7
 es5-shim@4.1.13
 fastclick@1.0.7
 fourseven:scss@3.3.3_3
-gabrielpoca:accounts-headquarters@0.0.4
-gabrielpoca:headquarters@0.0.4
+gabrielpoca:accounts-headquarters@0.1.0
+gabrielpoca:headquarters@0.1.0
 geojson-utils@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
@@ -89,6 +89,8 @@ templating-tools@1.0.0
 tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4
+unicorn:headquarters@0.0.0
+unicorn:slack@0.0.0
 url@1.0.5
 webapp@1.2.2
 webapp-hashing@1.0.5

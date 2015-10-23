@@ -6,6 +6,6 @@ Meteor.methods({
       text: content
     };
 
-    HTTP.post(Meteor.settings.slack.url, { data: data });
+    HTTP.post(Meteor.settings.slack.messageUrl, { data: data });
   }
 });

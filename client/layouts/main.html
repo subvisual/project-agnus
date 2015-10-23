@@ -2,8 +2,11 @@
   <nav>
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <!-- <li><a href="sass.html">Sass</a></li> -->
+        <li><a href="{{pathFor 'home'}}">Home</a></li>
+        <li><a href="{{pathFor 'surveys'}}">Surveys</a></li>
+        <li><a href="{{pathFor 'questions'}}">Questions</a></li>
       </ul>
+      {{> loginButtons}}
     </div>
   </nav>
   <div class="row">
