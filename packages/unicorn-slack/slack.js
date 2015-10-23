@@ -1,6 +1,6 @@
 Meteor.methods({
   sendSlackMessage: function(target, content) {
-    content = 'http://' + this.connection.httpHeaders.host + content
+    content = 'http://agnus.meteor.com' + content
     var data = {
       channel: target,
       username: Meteor.settings.slack.username,
