@@ -1,0 +1,16 @@
+<template name="surveysReply">
+  <div class="row">
+    <div class="col s8 offset-s2 center-align">
+      <h4>{{surveyName}}</h4>
+      {{# each questions}}
+        <div class="card hoverable">
+          <div class="card-content">
+            <p>{{description}}</p>
+            <br>
+            {{ > answerButtons questionId=_id}}
+          </div>
+        </div>
+      {{/ each}}
+    </div>
+  </div>
+</template>

@@ -67,6 +67,20 @@ Router.map(function setUpRoutes() {
     path: '/surveys/:id'
   });
 
+  this.route('surveys.send', {
+    path: '/surveys/send/:id'
+  });
+
+  this.route('surveys.reply', {
+    path: '/surveys/reply/:id/:userEmail',
+    onBeforeAction: function (pause) {
+      if (!Meteor.user() || Meteor.user().profile.email !== this.params.userEmail)
+        this.render('login');
+      else
+        this.next();
+    }
+  });
+
   this.route('surveys.delete', {
     path: '/surveys/delete/:id',
     action: function() {

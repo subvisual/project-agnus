@@ -1,0 +1,32 @@
+<template name="surveysSend">
+  <div class="row">
+    {{# if ready}}
+      <div class="input-field col s6 offset-s3">
+        <select>
+          {{# each users}}
+            <option value="{{slack slack_handler}}">{{name}} - {{slack slack_handler}}</option>
+          {{/ each}}
+        </select>
+        <label>Users</label>
+        <div class="right-align">
+          <a class="waves-effect waves-light btn white-text" id="send">Send</a>
+        </div>
+      </div>
+    {{else}}
+    <div class="col s6 offset-s3 center-align">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      <p>Loading Users...</p>
+    </div>
+    {{/ if}}
+  </div>
+</template>
