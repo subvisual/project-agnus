@@ -1,5 +1,8 @@
 Meteor.methods({
   sendSlackMessage: function(target, content) {
+    if (!this.userId)
+      return;
+
     content = 'http://agnus.meteor.com' + content
     var data = {
       channel: target,
