@@ -5,11 +5,13 @@
         {{# each questions}}
           <li class="collection-item">
             {{description}}
-            <a href="{{pathFor 'questions.delete' id=_id}}" class="secondary-content">
+            <a href="{{pathFor 'questions.delete' id=_id}}" class="secondary-content tooltipped" data-tooltip="Delete question">
               <i class="material-icons">delete</i>
             </a>
+
             <a class="secondary-content"><i class="material-icons"></i></a>
-            <a href="{{pathFor 'questions.edit' id=_id}}" class="secondary-content">
+
+            <a href="{{pathFor 'questions.edit' id=_id}}" class="secondary-content tooltipped" data-tooltip="Edit question">
               <i class="material-icons">edit</i>
             </a>
           </li>

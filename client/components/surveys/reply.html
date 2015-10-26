@@ -7,10 +7,13 @@
           <div class="card-content">
             <p>{{description}}</p>
             <br>
-            {{ > answerButtons questionId=_id}}
+            {{ > answerButtons questionId=_id scores=scores}}
           </div>
         </div>
       {{/ each}}
+      <div class="right-align">
+        <button class="btn btn-primary" id="submit">Submit</button>
+      </div>
     </div>
   </div>
 </template>

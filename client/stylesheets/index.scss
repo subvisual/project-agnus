@@ -2,3 +2,14 @@
 $primary-color: color("teal", "darken-1");
 
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";
+
+.nav-wrapper {
+  padding: 0 10px;
+}
+
+.NavLogo {
+  height: 50px;
+  border-radius: 50%;
+  line-height: 64px;
+  vertical-align: middle;
+}

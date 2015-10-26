@@ -1,12 +1,13 @@
 <template name="mainLayout">
   <nav>
     <div class="nav-wrapper">
+      <a href="{{pathFor 'home'}}" class="brand-logo"><img class="NavLogo" src="/logo.jpg"/>  Agnus</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="{{pathFor 'home'}}">Home</a></li>
         <li><a href="{{pathFor 'surveys'}}">Surveys</a></li>
         <li><a href="{{pathFor 'questions'}}">Questions</a></li>
+        {{> loginButtons}}
       </ul>
-      {{> loginButtons}}
     </div>
   </nav>
   <div class="row">

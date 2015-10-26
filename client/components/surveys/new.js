@@ -3,6 +3,13 @@ var questions = [];
 Template.surveysNew.helpers({
   questions: function() {
     return Questions.find();
+  },
+
+  username: function() {
+    if (!Meteor.user())
+      return;
+
+    return Meteor.user().profile.name;
   }
 });
 
