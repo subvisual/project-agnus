@@ -1,4 +1,15 @@
 <template name="home">
-  <a href="{{pathFor 'surveys'}}" class="waves-effect waves-light btn-large">Surveys</a>
-  <a href="{{pathFor 'questions'}}" class="waves-effect waves-light btn-large">Questions</a>
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s4"><a class="active" href="#surveys">Surveys</a></li>
+      <li class="tab col s4"><a href="#questions">Questions</a></li>
+      <li class="tab col s4"><a href="#overview">Overview</a></li>
+    </ul>
+  </div>
+
+  <div class="row"><div class="col s12"></div></div>
+
+  <div id="surveys" class="col s12">{{ > surveys }}</div>
+  <div id="questions" class="col s12">{{ > questions }}</div>
+  <div id="overview" class="col s12">overview</div>
 </template>
