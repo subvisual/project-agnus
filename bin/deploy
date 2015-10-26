@@ -1,0 +1,1 @@
+meteor deploy agnus.meteor.com --settings settings.json
