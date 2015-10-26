@@ -89,4 +89,8 @@ Router.map(function setUpRoutes() {
       Router.go('surveys')
     }
   });
+
+  this.route('overview', {
+    path: '/overview'
+  });
 });
