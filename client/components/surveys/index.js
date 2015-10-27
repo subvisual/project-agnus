@@ -4,7 +4,12 @@ Template.surveys.helpers({
   },
 
   questionDescription: function(id) {
-    return Questions.findOne({_id: id}).description;
+    var question = Questions.findOne({_id: id});
+
+    if (!question || !question.description)
+      return;
+
+    return question.description;
   }
 });
 

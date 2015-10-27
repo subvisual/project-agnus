@@ -62,8 +62,8 @@ Router.map(function setUpRoutes() {
 
   this.route('questions.delete', {
     path: '/questions/delete/:id',
-    action: function() {
-      Meteor.call('deleteQuestion', Router.current().params.id);
+    action: () => {
+      Meteor.call('deleteQuestion', this.params.id);
 
       Router.go('questions')
     }
@@ -73,6 +73,7 @@ Router.map(function setUpRoutes() {
     path: '/surveys',
     subscriptions: () => {
       Meteor.subscribe('surveys');
+      Meteor.subscribe('questions');
     }
   });
 
@@ -110,7 +111,7 @@ Router.map(function setUpRoutes() {
   this.route('surveys.delete', {
     path: '/surveys/delete/:id',
     action: function() {
-      Meteor.call('deleteSurvey', Router.current().params.id);
+      Meteor.call('deleteSurvey', this.params.id);
 
       Router.go('surveys')
     }
