@@ -31,19 +31,33 @@ Router.map(function setUpRoutes() {
   });
 
   this.route('home', {
-    path: '/'
+    path: '/',
+    subscriptions: () => {
+      Meteor.subscribe('surveys');
+      Meteor.subscribe('questions');
+      Meteor.subscribe('replyedSurveys');
+    }
   });
 
   this.route('questions', {
-    path: '/questions'
+    path: '/questions',
+    subscriptions: () => {
+      Meteor.subscribe('questions');
+    }
   });
 
   this.route('questions.new', {
-    path: '/questions/new'
+    path: '/questions/new',
+    subscriptions: () => {
+      Meteor.subscribe('questions');
+    }
   });
 
   this.route('questions.edit', {
-    path: '/questions/:id'
+    path: '/questions/:id',
+    subscriptions: () => {
+      Meteor.subscribe('question');
+    }
   });
 
   this.route('questions.delete', {
@@ -56,15 +70,24 @@ Router.map(function setUpRoutes() {
   });
 
   this.route('surveys', {
-    path: '/surveys'
+    path: '/surveys',
+    subscriptions: () => {
+      Meteor.subscribe('surveys');
+    }
   });
 
   this.route('surveys.new', {
-    path: '/surveys/new'
+    path: '/surveys/new',
+    subscriptions: () => {
+      Meteor.subscribe('questions');
+    }
   });
 
   this.route('surveys.edit', {
-    path: '/surveys/:id'
+    path: '/surveys/:id',
+    subscriptions: () => {
+      Meteor.subscribe('survey', this.params.id);
+    }
   });
 
   this.route('surveys.send', {
@@ -73,6 +96,9 @@ Router.map(function setUpRoutes() {
 
   this.route('surveys.reply', {
     path: '/surveys/reply/:id/:userEmail',
+    subscriptions: () => {
+      Meteor.subscribe('survey', this.params.id);
+    },
     onBeforeAction: function (pause) {
       if (!Meteor.user() || Meteor.user().profile.email !== this.params.userEmail)
         this.render('login');
@@ -91,6 +117,9 @@ Router.map(function setUpRoutes() {
   });
 
   this.route('overview', {
-    path: '/overview'
+    path: '/overview',
+    subscriptions: () => {
+      return Meteor.subscribe('replyedSurveys');
+    }
   });
 });

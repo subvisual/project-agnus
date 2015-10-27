@@ -29,6 +29,7 @@ Template.overview.onCreated(function() {
   self.overviewChart = new ReactiveVar();
 
   Tracker.autorun(() => {
+    Meteor.subscribe('replyedSurveys');
     var chart = self.overviewChart.get();
 
     self.teamStats = getStats(ReplyedSurveys.find().fetch());
