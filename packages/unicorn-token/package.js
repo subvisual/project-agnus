@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'unicorn:api',
+  name: 'unicorn:token',
   version: '0.0.1',
   summary: ''
 });
@@ -8,12 +8,14 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
 
   var packages = [
-    'meteorhacks:picker',
-    'unicorn:slack'
+    'ecmascript',
   ];
 
   api.use(packages);
   api.imply(packages);
 
-  api.addFiles(['api.js'], 'server');
+  api.addFiles('token.js', 'server');
+  api.addFiles('token.js', 'client');
+
+  api.export('Token');
 });

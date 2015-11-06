@@ -6,11 +6,16 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.2');
 
   var packages = [
-    'unicorn:headquarters'
+    'ecmascript',
+    'unicorn:headquarters',
+    'unicorn:token',
   ];
 
   api.use(packages);
   api.imply(packages);
 
-  api.addFiles(['slack.js'], 'server');
+  api.addFiles('message.js', 'client');
+  api.addFiles(['slack.js', 'message.js'], 'server');
+
+  api.export('SlackMessage');
 });

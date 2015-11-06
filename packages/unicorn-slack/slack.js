@@ -1,46 +1,25 @@
 Meteor.methods({
-  sendSlackMessage: function(target, content) {
-    if (!this.userId)
+  'slack:sendMessage': function(token, ...messages) {
+    if (!this.userId && !Token.valid(token) || !messages.length)
       return;
 
-    sendMessage(target, content);
-  },
-
-  sendToMultipleUsers: function() {
-    var contentLink = 'Please fill in this <' + Meteor.settings.forms.dailyReport + '|form>.';
-
-    var send = Meteor.bindEnvironment(sendMessage);
-    var getMembers = Meteor.bindEnvironment(Headquarters.member.all);
-
-    getMembers().then(function(members) {
-      members.forEach(function(user) {
-        var greetings = 'Hey ' + user.name + '!\n';
-        send(normalizeHandler(user.slack_handler), greetings + contentLink + '\nThank you :smile:');
-      });
-    });
+    return _.chain(messages)
+      .flatten()
+      .each(Meteor.bindEnvironment(sendMessage));
   }
 });
 
-function sendMessage(target, content, callback) {
-  var data = {
-    channel: target,
-    username: Meteor.settings.slack.username,
-    text: content
-  };
+function sendMessage(message) {
+  if (!validMessage(message))
+    return
 
   try {
-    HTTP.post(Meteor.settings.slack.messageUrl, { data: data }, callback);
-  } catch(e) {
-    console.log(e);
+    HTTP.post(Meteor.settings.slack.messageUrl, { data: message });
+  } catch(error) {
+    console.log(error);
   }
 }
 
-function normalizeHandler(handler) {
-  if (!handler)
-    return
-
-  if (handler[0] !== '@')
-    return '@' + handler;
-  else
-    return handler;
+function validMessage(message) {
+  return message.text && message.channel && message.username;
 }

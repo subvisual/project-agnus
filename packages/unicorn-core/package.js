@@ -34,9 +34,10 @@ Package.onUse(function(api) {
     'session',
     'standard-minifiers',
     'tracker',
-    'unicorn:api',
+    'unicorn:daily-report',
     'unicorn:headquarters',
     'unicorn:slack',
+    'unicorn:token',
   ];
 
   api.use(packages);

@@ -23,7 +23,7 @@ Template.surveysSend.onCreated(function() {
   self.users = new ReactiveVar();
   self.ready = new ReactiveVar(false);
 
-  Meteor.call('getHqUsers', function(err, response) {
+  Meteor.call('hq:getUsers', function(err, response) {
     if (err)
       return;
 
@@ -45,14 +45,16 @@ Template.surveysSend.events({
     var userEmail = '';
     var users = template.users.get();
     var surveyId = Router.current().params.id;
-    var userSlack = template.$('select').val();
+    var slackHandler = template.$('select').val();
 
     users.forEach(function(user) {
-      if (user.slack_handler === userSlack)
+      if (user.slack_handler === slackHandler)
         userEmail = user.email;
     });
 
-    var surveyURL = 'http://agnus.meteor.com' + Router.path('surveys.reply',{id: surveyId, userEmail});
-    Meteor.call('sendSlackMessage', userSlack, surveyURL);
+    let surveyURL = 'http://agnus.meteor.com' + Router.path('surveys.reply',{id: surveyId, userEmail});
+    let message = new SlackMessage(slackHandler, surveyURL);
+
+    Meteor.call('slack:sendMessage', '', message);
   }
 });
