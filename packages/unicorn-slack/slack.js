@@ -17,7 +17,7 @@ Meteor.methods({
         var greetings = 'Hey ' + user.name + '!\n';
 
         if (user.slack_handler === '@justo' || user.slack_handler === '@lauraesteves')
-          send(user.slack_handler, greetings + contentLink + '\nThank you :smile:');
+          send(normalizeHandler(user.slack_handler), greetings + contentLink + '\nThank you :smile:');
       });
     });
   }
