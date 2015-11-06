@@ -52,6 +52,7 @@ Template.surveysSend.events({
         userEmail = user.email;
     });
 
-    Meteor.call('sendSlackMessage', userSlack, Router.path('surveys.reply',{id: surveyId, userEmail}));
+    var surveyURL = 'http://agnus.meteor.com' + Router.path('surveys.reply',{id: surveyId, userEmail});
+    Meteor.call('sendSlackMessage', userSlack, surveyURL);
   }
 });

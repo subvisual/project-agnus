@@ -1,12 +1,12 @@
-Headquarters = Npm.require('headquarters-node');
+var HQ = Npm.require('headquarters-node');
+
+Headquarters = Headquarters || HQ(Meteor.settings.hq);
 
 Meteor.methods({
   getHqUsers: function(callback) {
     if (!this.userId)
       return;
 
-    var headquarters = Headquarters(Meteor.settings.hq);
-
-    return headquarters.member.all();
+    return Headquarters.member.all();
   }
 });

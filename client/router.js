@@ -98,7 +98,7 @@ Router.map(function setUpRoutes() {
   this.route('surveys.reply', {
     path: '/surveys/reply/:id/:userEmail',
     subscriptions: () => {
-      Meteor.subscribe('survey', this.params.id);
+      Meteor.subscribe('survey', Router.current().params.id);
     },
     onBeforeAction: function (pause) {
       if (!Meteor.user() || Meteor.user().profile.email !== this.params.userEmail)

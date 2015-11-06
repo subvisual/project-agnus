@@ -2,6 +2,9 @@ Template.surveysReply.helpers({
   questions: function() {
     var questions = [];
 
+    if (!Template.instance().questionsIds.get())
+      return;
+
     Template.instance().questionsIds.get().forEach(function(id) {
       questions.push(Questions.findOne({_id: id}));
     });
@@ -27,8 +30,12 @@ Template.surveysReply.onCreated(function() {
   this.scores = new ReactiveVar({});
   this.questionsIds = new ReactiveVar();
 
-  this.survey.set(Surveys.findOne({_id: surveyId}));
-  this.questionsIds.set(this.survey.get().questions);
+  this.autorun(() => {
+    this.survey.set(Surveys.findOne({_id: surveyId}));
+
+    if (this.survey.get())
+      this.questionsIds.set(this.survey.get().questions);
+  });
 });
 
 Template.surveysReply.events({
