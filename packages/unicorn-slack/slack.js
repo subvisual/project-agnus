@@ -7,18 +7,18 @@ Meteor.methods({
   },
 
   sendToMultipleUsers: function() {
-    var content = Meteor.settings.forms.dailyReport;
+    var contentLink = 'Please fill in this <' + Meteor.settings.forms.dailyReport + '|form>.';
 
     var send = Meteor.bindEnvironment(sendMessage);
     var getMembers = Meteor.bindEnvironment(Headquarters.member.all);
 
-    return getMembers().then(function(members) {
+    getMembers().then(function(members) {
       members.forEach(function(user) {
-        if (user.slack_handler === '@justo' || user.slack_handler === '@lauraesteves')
-          send(user.slack_handler, content);
-      });
+        var greetings = 'Hey ' + user.name + '!\n';
 
-      return members;
+        if (user.slack_handler === '@justo')
+          send(user.slack_handler, greetings + contentLink + '\nThank you :smile:');
+      });
     });
   }
 });
