@@ -117,6 +117,13 @@ Router.map(function setUpRoutes() {
     }
   });
 
+  this.route('positions', {
+    path: '/positions',
+    subscriptions: () => {
+      Meteor.subscribe('positions');
+    }
+  });
+
   this.route('overview', {
     path: '/overview',
     subscriptions: () => {

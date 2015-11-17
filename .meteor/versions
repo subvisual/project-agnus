@@ -91,6 +91,7 @@ templating-tools@1.0.0
 tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4
+unicorn:beacons@0.0.1
 unicorn:core@0.0.1
 unicorn:daily-report@0.0.1
 unicorn:headquarters@0.0.0
