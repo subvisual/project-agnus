@@ -9,6 +9,10 @@ Meteor.methods({
     getUsers().then(users => {
       sendSlackMessage(_.map(users, generateReportMessage));
     });
+  },
+
+  'dailyReport:submit': function(form) {
+    DailyReports.insert(form);
   }
 });
 

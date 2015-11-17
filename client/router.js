@@ -117,6 +117,10 @@ Router.map(function setUpRoutes() {
     }
   });
 
+  this.route('daily-report.reply', {
+    path: '/daily-report/reply'
+  })
+
   this.route('overview', {
     path: '/overview',
     subscriptions: () => {

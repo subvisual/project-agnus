@@ -9,6 +9,7 @@ Package.onUse(function(api) {
 
   var packages = [
     'ecmascript',
+    'templating',
     'meteorhacks:picker',
     'unicorn:headquarters',
     'unicorn:slack',
@@ -17,11 +18,21 @@ Package.onUse(function(api) {
   api.use(packages);
   api.imply(packages);
 
-  api.addFiles([
+  var serverFiles = [
     'strings.js',
     'server/api.js',
     'server/methods.js'
-  ], 'server');
+  ];
+
+  var clientFiles = [
+    'client/daily-report-form.html',
+    'client/daily-report-form.js',
+    'client/daily-report-reply.html',
+    'client/daily-report-reply.js'
+  ];
+
+  api.addFiles(serverFiles, 'server');
+  api.addFiles(clientFiles, 'client');
 
   api.export('DailyReport');
 });

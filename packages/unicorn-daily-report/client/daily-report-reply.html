@@ -1,0 +1,20 @@
+<template name="dailyReportReply">
+  <div class="row">
+    <div class="col s12 m8 offset-m2 center-align">
+      <div class="row valign-wrapper">
+        <div class="col s9 valign">
+          <h4>Daily Report for {{username}}</h4>
+        </div>
+        <div class="col s3 valign">
+          <button class="btn btn-primary" id="submit">Submit</button>
+        </div>
+      </div>
+      {{#each forms.get}}
+        {{> dailyReportForm forms=forms index=@index}}
+      {{/each}}
+      <div class="right-align">
+        <a id="addForm" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+      </div>
+    </div>
+  </div>
+</template>
