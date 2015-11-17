@@ -1,3 +1,8 @@
+var bodyParser = Npm.require( 'body-parser' );
+
+Picker.middleware( bodyParser.json() );
+Picker.middleware( bodyParser.urlencoded( { extended: false } ) );
+
 Picker.route('/API/beacons/position', function(params, req, res, next) {
   if (!req.body.position)
     return res.end('No position details');

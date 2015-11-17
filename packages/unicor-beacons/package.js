@@ -19,3 +19,7 @@ Package.onUse(function(api) {
     'server/api.js'
   ], 'server');
 });
+
+Npm.depends({
+  'body-parser': '1.14.1'
+});
