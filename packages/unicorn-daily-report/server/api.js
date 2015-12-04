@@ -8,7 +8,7 @@ Picker.route('/API/dailyReport/all', function(params, req, res, next) {
 });
 
 function validUser(username) {
-  let allowedUsers = ['justo', 'lauraesteves'];
+  let allowedUsers = ['justo', 'lauraesteves', 'rmdmachado'];
 
   return _.contains(allowedUsers, username);
 }
