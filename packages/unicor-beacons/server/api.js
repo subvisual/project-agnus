@@ -15,9 +15,17 @@ Picker.route('/API/beacons/position', function(params, req, res, next) {
 });
 
 Picker.route('/API/beacons/config', function(params, req, res, next) {
-  console.log('origin', params.query.origin);
-  console.log('farLeft', params.query.origin);
-  console.log('farRight', params.query.origin);
+  console.log('config hit:')
+  if (!req.body.origin.length || !req.body.farLeft.length || !req.body.farRight.length) {
+    console.log('invalid', req.body.origin.length, req.body.farLeft.length, req.body.farRight.length)
+    return res.end('Invalid data');
+  }
+
+  console.log('origin', req.body.origin);
+  console.log('farLeft', req.body.farLeft);
+  console.log('farRight', req.body.farRight);
+
+  Maps.insert(req.body);
 
   res.end('Ok');
 });
