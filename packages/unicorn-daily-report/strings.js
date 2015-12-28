@@ -6,7 +6,11 @@ DailyReport.messages = {
   },
 
   fillForm: (username, form) => {
-    return `Hey ${username}!\nPlease fill in this ${form}\nThank you :smile:`;
+    return `Hey ${username}, you have to:\n
+    1. Login Typeform (contact@groupbuddies.com / gbforms)\n
+    2. Fill in the ${form}\n
+    3. Send feedback, please\n
+    Thank you :smile:`;
   }
 }
 
